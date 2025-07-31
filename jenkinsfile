@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git credentialsId: 'remote-ssh', url: 'git@github.com:<your-username>/<repo-name>.git'
+                git credentialsId: 'remote-ssh', url: 'https://github.com/vinsen007/devops-ci-cd-project.git'
             }
         }
 
