@@ -5,8 +5,8 @@
   tasks:
     - name: Copy Docker image to remote
       copy:
-        src: ./myapp.tar
-        dest: /tmp/myapp.tar
+        src: ./flask-app.tar
+        dest: /tmp/myapp.tar  # It's fine to rename it on the remote if desired
 
     - name: Load Docker image on remote
       command: docker load -i /tmp/myapp.tar
@@ -21,4 +21,3 @@
 
     - name: Run new Docker container
       command: docker run -d --name myapp -p 80:80 myapp:latest
-
