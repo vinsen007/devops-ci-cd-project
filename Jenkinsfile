@@ -10,9 +10,10 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'master',   // <-- Changed from 'main' to 'master'
-                    credentialsId: 'remote-ssh',
-                    url: 'https://github.com/vinsen007/devops-ci-cd-project.git'
+                git branch: 'main',   // <-- was 'master', changed to 'main'
+                credentialsId: 'remote-ssh',
+                url: 'https://github.com/vinsen007/devops-ci-cd-project.git'
+
             }
         }
 
