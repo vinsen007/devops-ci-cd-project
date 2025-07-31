@@ -1,0 +1,24 @@
+- name: Deploy Dockerized Flask App
+  hosts: remote
+  become: true
+
+  tasks:
+    - name: Copy Docker image to remote
+      copy:
+        src: ./myapp.tar
+        dest: /tmp/myapp.tar
+
+    - name: Load Docker image on remote
+      command: docker load -i /tmp/myapp.tar
+
+    - name: Stop existing container (if running)
+      ignore_errors: true
+      command: docker stop myapp
+
+    - name: Remove old container (if exists)
+      ignore_errors: true
+      command: docker rm myapp
+
+    - name: Run new Docker container
+      command: docker run -d --name myapp -p 80:80 myapp:latest
+
